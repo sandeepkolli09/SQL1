@@ -1,0 +1,53 @@
+/* total rows in the dataset*/
+select * from athlete.event;
+
+/* count of rows in the dataset */
+select count(*) from athlete.event;
+
+/*2 nd dataset in athlete database */
+
+select * from athlete.prevelages;
+
+/* Question-1*/
+/* How many unique athletes are in the dataset?*/
+select  count(distinct(name)) from athlete.event ;
+
+
+/* Question-2*/
+
+/* What is the total number of Olympic events recorded in this dataset?  
+*/
+select distinct(count(Event)) from athlete.event;
+
+/* Question-3*/
+/*Who is the oldest and youngest athlete in the dataset?  */
+select * from athlete.event where age=(select max(age) from athlete.event);
+select * from athlete.event where age=(select min(age) from athlete.event);
+
+/* Question-4*/
+/*  How many medals were won by each country?*/
+select city,count(medal) from athlete.event where medal !='NA' group by city;
+
+
+/* Question-4*/
+/*Which sport had the highest participation across all Olympics? */
+select count(sport),city from athlete.event group by city order by count(sport) desc;
+
+/*Question -5*/
+/*How many athletes participated in the Summer vs. Winter Olympics?  
+*/
+select  season,count(*) as total from athlete.event where season In ('Summer','Winter') group by season;
+
+/*Question-6*/
+/*Which year had the highest number of participating athletes?*/
+select year,count(*) as total_participants from athlete.event group by year order by year desc limit 1;
+
+/*Question-7*/
+/*What is the average height and weight of athletes in each sport?  
+*/
+select avg(height)as avgheight, avg(weight) as avgweight from athlete.event;
+
+/*Question-8*/
+/* Which country dominates a particular sport, based on medal counts? */
+select city,sport,count(medal) as totalmedal from athlete.event group by city,sport order by sport desc limit 1;
+
