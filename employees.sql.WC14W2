@@ -1,0 +1,70 @@
+/*Creating Reading Updating Deleting*/
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50),
+    Salary DECIMAL(10, 2),
+    JoiningDate DATE
+);
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Age INT,
+    Department VARCHAR(50),
+    Salary DECIMAL(10, 2),
+    JoiningDate DATE
+);
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Age, Department, Salary, JoiningDate) VALUES
+(1, 'Alice', 'Johnson', 25, 'HR', 50000, '2020-01-15'),
+(2, 'Bob', 'Smith', 30, 'IT', 70000, '2019-11-23'),
+(3, 'Carol', 'Davis', 28, 'Sales', 45000, '2021-05-01'),
+(4, 'David', 'Martin', 35, 'Marketing', 60000, '2018-07-30'),
+(5, 'Eve', 'Lewis', 40, 'IT', 75000, '2017-04-12'),
+(6, 'Frank', 'Walker', 29, 'Sales', 48000, '2020-09-18'),
+(7, 'Grace', 'Hall', 32, 'HR', 52000, '2021-03-10'),
+(8, 'Henry', 'Young', 26, 'Marketing', 58000, '2019-12-25'),
+(9, 'Irene', 'King', 45, 'IT', 80000, '2016-10-11'),
+(10, 'Jack', 'Wright', 34, 'Sales', 46000, '2022-02-17'),
+(11, 'Karen', 'Lopez', 27, 'HR', 55000, '2020-08-22'),
+(12, 'Leo', 'Scott', 38, 'IT', 72000, '2018-05-06'),
+(13, 'Mary', 'Adams', 31, 'Marketing', 61000, '2021-11-30'),
+(14, 'Nancy', 'Perez', 29, 'Sales', 47000, '2019-06-15'),
+(15, 'Oscar', 'Baker', 36, 'IT', 78000, '2017-09-04'),
+(16, 'Paul', 'Carter', 41, 'HR', 56000, '2016-03-29'),
+(17, 'Quinn', 'Turner', 33, 'Marketing', 63000, '2020-12-05'),
+(18, 'Rose', 'Parker', 28, 'Sales', 49000, '2022-01-14'),
+(19, 'Steve', 'Morris', 39, 'IT', 81000, '2018-02-20'),
+(20, 'Tina', 'Collins', 42, 'HR', 53000, '2015-07-08'),
+(21, 'Uma', 'Edwards', 30, 'Marketing', 62000, '2021-09-25'),
+(22, 'Victor', 'Bailey', 27, 'IT', 69000, '2019-05-18'),
+(23, 'Wendy', 'Hughes', 35, 'Sales', 50000, '2020-11-11'),
+(24, 'Xavier', 'Rogers', 29, 'Marketing', 60000, '2021-01-07'),
+(25, 'Yvonne', 'Reed', 26, 'IT', 71000, '2020-03-21'),
+(26, 'Zach', 'Ward', 28, 'Sales', 47000, '2019-04-16'),
+(27, 'Amelia', 'Gray', 31, 'Marketing', 64000, '2021-06-22'),
+(28, 'Bruce', 'Foster', 34, 'HR', 54000, '2019-07-13'),
+(29, 'Clara', 'Howard', 29, 'IT', 75000, '2017-02-27'),
+(30, 'Daniel', 'Bell', 37, 'Sales', 52000, '2020-10-03');
+
+/*Read values*/
+Select * from Employees;
+
+/*Total values*/
+select count(*) from employees;
+
+/*update values*/
+/*before updation*/
+select * from employees where Department='IT' and Salary>=60000;
+SET SQL_SAFE_UPDATES = 0;
+
+/*after updation*/
+update Employees  Set salary=80000 where Department='IT' and Salary>=60000;
+select * from employees where Department='IT' and Salary>=60000;
+
+/*Deletion {deleting employees records whose joining date on or before 2017-10-30}*/
+delete from  employees where joiningDate <='2017-10-30';
+Select * from Employees;
+select count(*) from employees;
